@@ -1,0 +1,9 @@
+.CharacterCard{
+    width: 300px;
+    margin: 40px;
+    border: 2px solid;
+}
+ul{
+    list-style: none;
+}
+

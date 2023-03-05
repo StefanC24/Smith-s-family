@@ -1,24 +1,13 @@
-import logo from './logo.svg';
+import CharacterCard from './components/CharacterCard';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+       <CharacterCard name="Morty Smith" image="https://rickandmortyapi.com/api/character/avatar/2.jpeg" species="human" />
+       <CharacterCard name="Summer Smith" image="https://rickandmortyapi.com/api/character/avatar/3.jpeg" species="human" />
+       <CharacterCard name="Beth Smith" image="https://rickandmortyapi.com/api/character/avatar/4.jpeg" species="human" />
+     </div>
   );
 }
 
