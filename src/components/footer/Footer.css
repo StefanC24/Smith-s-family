@@ -1,0 +1,18 @@
+.footer{
+    position: relative;
+    bottom: 0;
+    border-top: 1px solid;
+    width: 100%;
+    margin: 10px 0 0 0;
+background-color: rgb(75, 21, 125);
+}
+
+input{
+    background: transparent;
+    border: 1px solid rgb(137, 32, 235); 
+    margin-bottom: 5px;
+}
+
+::-webkit-input-placeholder{
+    color: white;
+}

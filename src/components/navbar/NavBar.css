@@ -8,6 +8,22 @@
     padding-bottom: 10px;
     border-bottom: 2px solid
 }
+
+.nav-item{
+    margin-right: 50px;
+}
+
 input{
     height: 20px;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    font-weight: bold;
+}
+
+.li{
+    text-decoration: none;
+    color: rgb(37, 78, 193);
 }

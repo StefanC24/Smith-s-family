@@ -1,55 +1,27 @@
 import React from 'react';
-import axios from 'axios'
-import CharacterCard from './components/CharacterCard';
-import NavBar from './components/NavBar';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
+import CharacterList from './components/characterList/CharacterList';
+import NavBar from './components/navbar/NavBar'
+import Contact from './components/contact/Contact';
+import About from './components/about/About';
+import Footer from './components/footer/Footer';
+import CharacterDetails from './components/characterDetails/CharacterDetails';
 
 function App() {
-  const [characters, setCharacter] = React.useState([])
-  const [currentPage, setCurrentPage] = React.useState(1)
-
-  const fetchCharacters = (currentPageNumber) =>{
-    axios.get(`https://rickandmortyapi.com/api/character?page=${currentPageNumber}`)
-    .then(response => 
-      setCharacter(response.data.results))
-      setCurrentPage(currentPageNumber)
-  }
-
-  const changePage = (currentPageNumber, direction) =>{
-    if(currentPageNumber === 1 && direction === 'previous'){
-      return
-    }
-    else if( currentPageNumber === 42 && direction === 'next'){
-      return
-    }
-
-    if(direction === 'previous'){
-      fetchCharacters(currentPageNumber - 1)
-    }
-    else if(direction === 'next'){
-      fetchCharacters(currentPageNumber + 1)
-    }
-  }
-
+  const location = useLocation();
   return (
     <div className="App">
-
-      <NavBar />
-      <div className='nav-buttons'>  
-        <button onClick={() => changePage(currentPage, 'previous')}>Previous page</button>
-        <button onClick={() => fetchCharacters(1)}>Click to import first characters</button>
-        <button onClick={() => changePage(currentPage, 'next')}>Next page</button>
-      </div>
-        <div className='cards-container'>
-          {characters.map(character=>(
-            <CharacterCard 
-              name={character.name}
-              image={character.image}
-            />
-          ))}     
-        </div>
-
-    </div>
+      <NavBar/>
+      <Routes>
+        <Route path='/characters' element={<CharacterList/>} />
+        <Route path='/characters/:id' element={<CharacterDetails/>} />
+        <Route path='about' element={<About/>} />
+        <Route path='contact' element={<Contact/>} />
+        <Route path='*' element={<Navigate to='/characters' replace/>} />
+      </Routes>  
+      {location.pathname !=='/about' ?<Footer/> : null}
+    </div> 
   );
 }
 
